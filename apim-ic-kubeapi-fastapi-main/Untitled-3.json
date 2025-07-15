@@ -1,0 +1,15 @@
+{
+    "apiVersion": "v1",
+    "data": {
+        "http-snippets": "allow 127.0.0.1;allow 192.168.0.0/16;",
+        "resolver-addresses": "kube-dns.kube-system.svc.cluster.local",
+        "resolver-valid": "5s",
+        "zone-sync": "true"
+    },
+    "kind": "ConfigMap",
+    "metadata": {
+        "annotations": {},
+        "name": "nginx-config",
+        "namespace": "nginx-ingress"
+    }
+}d

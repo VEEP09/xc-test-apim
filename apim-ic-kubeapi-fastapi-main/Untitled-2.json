@@ -1,0 +1,31 @@
+{
+    "detail": [
+        {
+            "type": "missing",
+            "loc": [
+                "body",
+                "PolicyName"
+            ],
+            "msg": "Field required",
+            "input": {
+                "AllowIP": [
+                    "113.161.201.1",
+                    "192.22.22.1"
+                ]
+            }
+        },
+        {
+            "type": "missing",
+            "loc": [
+                "body",
+                "ApplyRange"
+            ],
+            "msg": "Field required",
+            "input": {
+                "AllowIP": [
+                    "113.161.201.1",
+                    "192.22.22.1"
+                ]
+            }
+        }
+    
