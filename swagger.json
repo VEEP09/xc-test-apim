@@ -1,0 +1,248 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Demo Bank API",
+    "description": "Use to create mock requests and responses. Not an official F5 property.",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/accountlookup/getsavings": {
+      "get": {
+        "tags": [
+          "accountlookup"
+        ],
+        "summary": "Get Savings Account balance for a Customer by Customer ID.",
+        "parameters": [
+          {
+            "name": "CustID",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns Savings Account balance."
+          },
+          "400": {
+            "description": "The CustID field is missing or not accepted."
+          }
+        }
+      }
+    },
+    "/api/accountlookup/getchecking": {
+      "get": {
+        "tags": [
+          "accountlookup"
+        ],
+        "summary": "Get Checking Account balance for a Customer by Customer ID.",
+        "parameters": [
+          {
+            "name": "CustID",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns Checking Account balance."
+          },
+          "400": {
+            "description": "The CustID field is missing or not accepted."
+          }
+        }
+      }
+    },
+    "/api/customerlookup/getbyid": {
+      "get": {
+        "tags": [
+          "customerlookup"
+        ],
+        "summary": "Get Customer information by Customer ID.",
+        "parameters": [
+          {
+            "name": "CustID",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns Customers information."
+          },
+          "400": {
+            "description": "CustID field is missing or not accepted."
+          }
+        }
+      }
+    },
+    "/api/customerlookup/getbylastname": {
+      "get": {
+        "tags": [
+          "customerlookup"
+        ],
+        "summary": "Get Customer information by Last Name.",
+        "parameters": [
+          {
+            "name": "lastname",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns Customer information."
+          },
+          "400": {
+            "description": "Last Name field is missing or not accepted."
+          },
+          "404": {
+            "description": "Customer not found."
+          }
+        }
+      }
+    },
+    "/api/customerlookup/getbyheroname": {
+      "get": {
+        "tags": [
+          "customerlookup"
+        ],
+        "summary": "Get Customer information by Hero Name.",
+        "parameters": [
+          {
+            "name": "heroname",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns Customer information."
+          },
+          "400": {
+            "description": "Last Name field is missing or not accepted."
+          },
+          "404": {
+            "description": "Customer not found."
+          }
+        }
+      }
+    },
+    "/api/customerlookup/getbydob": {
+      "get": {
+        "tags": [
+          "customerlookup"
+        ],
+        "summary": "Get Customer information by Date of Birth.",
+        "parameters": [
+          {
+            "name": "DOB",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns Customer information."
+          },
+          "400": {
+            "description": "DOB field is missing or not accepted."
+          },
+          "404": {
+            "description": "Customer not found."
+          }
+        }
+      }
+    },
+    "/api/customerlookup/getallcustomers": {
+      "get": {
+        "tags": [
+          "customerlookup"
+        ],
+        "summary": "Get information about all Customers.",
+        "responses": {
+          "200": {
+            "description": "Returns Customer information."
+          },
+          "404": {
+            "description": "No Customers are found."
+          }
+        }
+      }
+    },
+    "/api/messageservice/send": {
+      "post": {
+        "tags": [
+          "messageservice"
+        ],
+        "summary": "Send a support message.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MessageModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Message successfully sent."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "MessageModel": {
+        "required": [
+          "email",
+          "firstName",
+          "lastName",
+          "message",
+          "phoneNumber"
+        ],
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9 ]+$",
+            "type": "string"
+          },
+          "lastName": {
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9 ]+$",
+            "type": "string"
+          },
+          "phoneNumber": {
+            "minLength": 1,
+            "pattern": "^\\(\\d{3}\\) \\d{3}-\\d{4}$",
+            "type": "string"
+          },
+          "email": {
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "message": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
